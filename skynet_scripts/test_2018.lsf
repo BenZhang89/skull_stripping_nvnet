@@ -1,0 +1,17 @@
+#!/bin/bash
+#BSUB -n 1
+#BSUB -gpu "num=1:mode=shared:j_exclusive=yes"
+#BSUB -R "rusage[mem=8]"
+#BSUB -q short
+#BSUB -o /gpfs/scratch/bz957/brats/BraTS2018_NvNet-master/skynet_scripts/test_%J.log
+
+
+. /gpfs/share/skynet/apps/anaconda3/etc/profile.d/conda.sh
+#conda activate /gpfs/scratch/bz957/brats_skynet
+conda activate powerai1.6_env
+#conda activate tensorflow-env
+#conda activate tensorflow_1_12_pytorch_1_0
+
+cd /gpfs/scratch/bz957/brats/BraTS2018_NvNet-master
+
+python -u predict_langone.py
